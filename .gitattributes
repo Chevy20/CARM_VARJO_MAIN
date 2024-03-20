@@ -1,0 +1,2 @@
+Assets/OutdoorsScene.unity filter=lfs diff=lfs merge=lfs -text
+Assets/EasyVolumeRendering/Assets/3rdparty/SimpleITK/SimpleITKCSharpNative.dll filter=lfs diff=lfs merge=lfs -text
