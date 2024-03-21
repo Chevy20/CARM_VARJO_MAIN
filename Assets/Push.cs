@@ -40,7 +40,7 @@ public class Push : MonoBehaviour
                 isLeftGrabbing = true; // grab strength is over 0.8 threshold so it is true
                 Debug.Log("Left Grab");
             }
-            else if (leftGrabStrength < 0.7 && isLeftGrabbing) //We check isLeftGrabbing so this code isn't called if we aren't already grabbing.
+            else if (leftGrabStrength < 0.2 && isLeftGrabbing) //We check isLeftGrabbing so this code isn't called if we aren't already grabbing.
             {
                 isLeftGrabbing = false; // grab strength is less than 0.7 so no chance of jittering grab.
             }
@@ -59,7 +59,7 @@ public class Push : MonoBehaviour
                 isRightGrabbing = true; // grab strength is over 0.8 threshold so it is true
                 //Debug.Log("Right Grab");
             }
-            else if (rightGrabStrength < 0.7 && isRightGrabbing) //We check isRightGrabbing so this code isn't called if we aren't already grabbing.
+            else if (rightGrabStrength < 0.2 && isRightGrabbing) //We check isRightGrabbing so this code isn't called if we aren't already grabbing.
             {
                 isRightGrabbing = false; // grab strength is less than 0.7 so no chance of jittering grab.
             }
@@ -89,6 +89,29 @@ public class Push : MonoBehaviour
 
             // Update the previous hand position
             previousRightHandPosition = RightHand.PalmPosition;
+
+        }
+         else if (other.gameObject.name == "LeftHandCollider" && isLeftGrabbing)
+        {
+            // Calculate the difference in the Z position of the hand between the current and the previous frame
+            float handMovementZ = LeftHand.PalmPosition.z - previousLeftHandPosition.z;
+            Debug.Log(handMovementZ);
+            // Get the current position of the carm GameObject
+            Vector3 carmPosition = carm.transform.position;
+
+            // Add the hand movement to the Z position of the carm GameObject
+            // But only if the carm GameObject is not colliding with the BackLimitCollider or the hand is moving in the +Z direction
+            if ((!isCollidingWithBackLimit || handMovementZ < 0) && (!isCollidingWithFrontLimit || handMovementZ > 0))
+            {
+                carmPosition.z += handMovementZ;
+            }
+
+
+            // Update the position of the carm GameObject
+            carm.transform.position = carmPosition;
+
+            // Update the previous hand position
+            previousLeftHandPosition = LeftHand.PalmPosition;
 
         }
     }

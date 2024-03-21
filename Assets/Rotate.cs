@@ -38,7 +38,7 @@ public class Rotate : MonoBehaviour
                 isLeftGrabbing = true; // grab strength is over 0.8 threshold so it is true
                 Debug.Log("Left Grab");
             }
-            else if (leftGrabStrength < 0.7 && isLeftGrabbing) //We check isLeftGrabbing so this code isn't called if we aren't already grabbing.
+            else if (leftGrabStrength < 0.2 && isLeftGrabbing) //We check isLeftGrabbing so this code isn't called if we aren't already grabbing.
             {
                 isLeftGrabbing = false; // grab strength is less than 0.7 so no chance of jittering grab.
             }
@@ -57,14 +57,11 @@ public class Rotate : MonoBehaviour
                 isRightGrabbing = true; // grab strength is over 0.8 threshold so it is true
                 //Debug.Log("Right Grab");
             }
-            else if (rightGrabStrength < 0.7 && isRightGrabbing) //We check isRightGrabbing so this code isn't called if we aren't already grabbing.
+            else if (rightGrabStrength < 0.2 && isRightGrabbing) //We check isRightGrabbing so this code isn't called if we aren't already grabbing.
             {
                 isRightGrabbing = false; // grab strength is less than 0.7 so no chance of jittering grab.
             }
         }
-
-
-
 
 
     }
@@ -112,7 +109,7 @@ public class Rotate : MonoBehaviour
         else if (other.gameObject.name == "LeftHandCollider" && isLeftGrabbing)
         {
             // Get the carm GameObject
-            GameObject carm = this.transform.parent.gameObject;
+            GameObject carm = this.transform.parent.parent.gameObject;
             // Get the direction of the hand movement
             Vector3 handMovementDirection = LeftHand.PalmPosition - previousLeftHandPosition;
 
