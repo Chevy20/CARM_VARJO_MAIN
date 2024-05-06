@@ -33,9 +33,9 @@ This repo is just for project hosting. Will not be updated.
 
 
 ## Usage
-**Build Project**
+- **Build Project**
   - File -> Build Settings -> Build -> Create Build Folder -> Build
-**Run in Unity Editor**
+- **Run in Unity Editor**
   - Click Play in Unity Editor
 
 ## Features
