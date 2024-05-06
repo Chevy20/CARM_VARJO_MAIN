@@ -35,6 +35,7 @@ This repo is just for project hosting. Will not be updated.
 ## Usage
 **Build Project**
   - File -> Build Settings -> Build -> Create Build Folder -> Build
+<br>
 **Run in Unity Editor**
   - Click Play in Unity Editor
 
